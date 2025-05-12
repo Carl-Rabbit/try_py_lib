@@ -1,9 +1,7 @@
 # my_package/__init__.py
 
 # 从封装模块 (wrapper.py) 导入你希望公开的 API
-from .wrapper import process_data, add, Calculator
-# 如果有其他 Python 模块，也可以从这里导入
-# from .other_module import some_utility
+# from .wrapper import process_data, add, Calculator
 
 # 定义包的版本号，这是一个好习惯
 # 注意：版本号最好只在一个地方定义（例如 pyproject.toml），然后其他地方引用它
@@ -20,9 +18,8 @@ except importlib.metadata.PackageNotFoundError:
 # 这控制了当用户执行 'from my_package import *' 时导入哪些名称
 # 它也是一个明确的信号，表明哪些是公共 API
 __all__ = [
-    'process_data',
-    'add',
-    'Calculator',
+    'func',
+    'animal'
     # 'some_utility',
     '__version__',
 ]
