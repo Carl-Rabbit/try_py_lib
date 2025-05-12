@@ -1,0 +1,66 @@
+# pyproject.toml
+[build-system]
+# 指定构建后端为 scikit-build-core 及其依赖
+requires = [
+    "scikit-build-core>=0.4", # 或更新版本
+    "pybind11>=2.6",         # pybind11 是构建依赖
+    "cmake>=3.16",           # 需要 CMake
+    "ninja",               # (可选, 推荐) 更快的构建工具
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+# --- 项目元数据 (PEP 621) ---
+name = "my_package"
+version = "0.1.0" # 定义唯一的版本号来源
+authors = [
+    { name = "Your Name", email = "your.email@example.com" },
+]
+description = "A Python package with a C++ core wrapped in Python (built with scikit-build-core)"
+readme = "README.md" # 指向 README 文件
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: C++",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+# --- 运行时依赖 ---
+# 列出你的包在运行时需要的其他 Python 包
+dependencies = [
+    # "numpy>=1.18", # 示例：如果你的 Python 或 C++ 代码需要 numpy
+]
+
+# --- 可选依赖 (例如，用于特定功能或开发) ---
+# [project.optional-dependencies]
+# dev = ["pytest", "black"]
+
+# --- 项目链接 ---
+[project.urls]
+Homepage = "https://github.com/yourusername/my_project"
+# Bug Tracker = "..."
+
+# --- scikit-build-core 特定配置 ---
+[tool.scikit-build]
+# 指定 CMake 最低版本 (可选, 如果 build-system.requires 中已指定)
+# cmake.minimum-version = "3.16"
+
+# (可选) 向 CMake 传递额外的配置参数
+# cmake.args = ["-DSOME_CMAKE_FLAG=ON", "-DOTHER_VAR=VALUE"]
+
+# (可选) 配置 Ninja (如果安装了 Ninja 并且希望使用)
+build.tool-args = ["-v"] # ninja 构建时显示详细信息
+
+# (可选) 配置 wheel 包的标签等
+# wheel.py-api = "cp37" # 指定 ABI 标签 (例如 cp37 表示 CPython 3.7+)
+# wheel.expand-macos-universal-tags = true # 自动处理 macOS 通用二进制标签
