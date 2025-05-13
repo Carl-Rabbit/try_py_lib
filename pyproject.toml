@@ -52,6 +52,7 @@ Homepage = "https://github.com/yourusername/my_project"
 
 # --- scikit-build-core 特定配置 ---
 [tool.scikit-build]
+build-dir = "build"
 # 指定 CMake 最低版本 (可选, 如果 build-system.requires 中已指定)
 # cmake.minimum-version = "3.16"
 
@@ -64,3 +65,13 @@ build.tool-args = ["-v"] # ninja 构建时显示详细信息
 # (可选) 配置 wheel 包的标签等
 # wheel.py-api = "cp37" # 指定 ABI 标签 (例如 cp37 表示 CPython 3.7+)
 # wheel.expand-macos-universal-tags = true # 自动处理 macOS 通用二进制标签
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --cov=my_package --cov-report=html" # 生成覆盖率报告
+testpaths = [
+    "tests/python",
+]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
