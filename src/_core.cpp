@@ -4,6 +4,7 @@
 
 #include "func/bindings_func.hpp"
 #include "animal/bindings_animal.hpp"
+#include "numpy_func/bindings_numpy_func.hpp"
 
 namespace py = pybind11;
 
@@ -14,4 +15,5 @@ PYBIND11_MODULE(_core, m) {
 
     init_bindings_func(m); // 绑定 func 模块
     init_bindings_animal(m); // 绑定 Animal 类及其子类
+    init_bindings_numpy_func(m);
 }

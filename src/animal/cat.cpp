@@ -1,5 +1,6 @@
 #include "animal/cat.h"
 
-void Cat::make_sound() const {
+std::string Cat::make_sound() const {
     std::cout << "Meow!" << std::endl;
+    return "Meow!";
 }

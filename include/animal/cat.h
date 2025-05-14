@@ -10,5 +10,5 @@ public:
     Cat() = default;
     ~Cat() override = default;
 
-    void make_sound() const override;
+    std::string make_sound() const override;
 };

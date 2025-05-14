@@ -19,7 +19,8 @@ except importlib.metadata.PackageNotFoundError:
 # 它也是一个明确的信号，表明哪些是公共 API
 __all__ = [
     'func',
-    'animal'
+    'animal',
+    # 'numpy_func',
     # 'some_utility',
     '__version__',
 ]

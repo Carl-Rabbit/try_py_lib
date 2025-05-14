@@ -3,6 +3,7 @@
 find_package(pybind11 CONFIG REQUIRED)
 
 add_subdirectory(animal)
+add_subdirectory(numpy_func)
 
 # 添加 C++ 扩展模块
 # 目标名 _core (与 PYBIND11_MODULE 中的第一个参数一致)
@@ -11,6 +12,7 @@ pybind11_add_module(_core
     _core.cpp # C++ 源文件路径 (相对于 CMakeLists.txt)
 )
 target_link_libraries(_core PRIVATE _animal)
+target_link_libraries(_core PRIVATE _numpy_func)
 
 set_target_properties(_core PROPERTIES
     INSTALL_RPATH "$ORIGIN" # 当安装时
@@ -38,7 +40,8 @@ target_compile_features(_core PRIVATE cxx_std_17)
 # 通常不需要在这里添加额外的 install() 命令用于 _core 模块本身
 install(TARGETS 
             _core 
-            _animal 
+            _animal
+            _numpy_func
         DESTINATION 
             my_package
         )

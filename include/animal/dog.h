@@ -10,5 +10,5 @@ public:
     Dog() = default;
     ~Dog() override = default;
 
-    void make_sound() const override;
+    std::string make_sound() const override;
 };

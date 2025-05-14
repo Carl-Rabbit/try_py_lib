@@ -52,7 +52,8 @@ Homepage = "https://github.com/yourusername/my_project"
 
 # --- scikit-build-core 特定配置 ---
 [tool.scikit-build]
-build-dir = "build"
+build-dir = "_skbuild"
+cmake.args = ["-DPython3_EXECUTABLE=${CONDA_PREFIX}/bin/python"]
 # 指定 CMake 最低版本 (可选, 如果 build-system.requires 中已指定)
 # cmake.minimum-version = "3.16"
 
@@ -75,3 +76,6 @@ testpaths = [
 python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"
+
+[tool.scikit-build.cmake.define]
+CMAKE_BUILD_TYPE = "Debug"
